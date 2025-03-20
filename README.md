@@ -7,7 +7,7 @@ Low cost camera:
 
 
 # Env settings (Linux)
-This demo makes your ESP32-CAM to connect to a Wifi as a Client. Therefore, you need to provide the SSID and password of your Wifi Router bia envvar:
+This demo makes your ESP32-CAM to connect to a Wifi as a Client. Therefore, you need to provide the SSID and password of your Wifi Router via envvar:
 ```
 source linux-source-me
 export WIFI_SSID=<your_wifi_ssid>
@@ -40,10 +40,10 @@ I (2869) Connect_WiFi: got ip:192.168.2.239
 Just write down the IP in your Browser Address Bar: http://your_cam_ip
 <br>
 For the above example:
-```
-http://192.168.2.239
-```
-You should get a video in your browser (made by JPEG pictures sequence)
+
+You should get a video in your browser (made by JPEG pictures sequence), for example:
+
+![Picture](Docs/image-sample.png)
 
 # Original link:
 https://esp32tutorials.com/esp32-cam-esp-idf-live-streaming-web-server/
