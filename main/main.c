@@ -10,7 +10,6 @@
 #include "esp_timer.h"
 #include "camera_pins.h"
 #include "connect_wifi.h"
-#include "dummy.h"
 #include "metadata.h"
 
 static const char *TAG = "esp32-cam Webserver";
@@ -183,7 +182,6 @@ void app_main()
 {
     esp_err_t err;
 
-    dummy();
     struct timeval tv = {1742406177, 0}; // Wed, 19 Mar 2025 17:42:57 GMT
     settimeofday(&tv, NULL);
 

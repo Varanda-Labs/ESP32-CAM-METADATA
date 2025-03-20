@@ -1,5 +1,5 @@
 
-idf_component_register(SRCS "dummy.c"
+idf_component_register(SRCS
     "metadata.c"
     "./libexif/libexif/exif-tag.c"
     "./libexif/libexif/exif-ifd.c"
