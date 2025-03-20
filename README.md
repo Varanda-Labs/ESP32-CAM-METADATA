@@ -30,14 +30,16 @@ idf.py flash monitor
 Note: you may need to provide the port parameter, ex: "idf.py -p /dev/ttyUSB1 flash monitor"
 
 # To connect
-You sould be able to see the ESP32-CAM IP that your router has assigned for it in the monitor (shell):
+You should be able to see in the monitor (shell logs) the camera's IP address that your router has assigned for it:
 ```
+...
 I (1859) wifi:<ba-add>idx:0 (ifx:0, 0c:ac:8a:06:51:5f), tid:7, ssn:1, winSize:64
 I (2869) esp_netif_handlers: sta ip: 192.168.2.239, mask: 255.255.255.0, gw: 192.168.2.1
 I (2869) Connect_WiFi: got ip:192.168.2.239
+...
 ```
 
-Just write down the IP in your Browser Address Bar: http://your_cam_ip
+Just write down the camera's IP in your Browser Address Bar: http://your_cam_ip
 <br>
 For the above example:
 
