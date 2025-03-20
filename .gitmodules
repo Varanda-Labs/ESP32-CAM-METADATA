@@ -1,0 +1,3 @@
+[submodule "components/exif/libexif"]
+	path = components/exif/libexif
+	url = https://github.com/mvaranda/libexif.git

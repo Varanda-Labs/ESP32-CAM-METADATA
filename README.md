@@ -6,7 +6,7 @@ Low cost camera:
 - [HW info](https://www.aideepen.com/products/esp32-cam-wifi-bluetooth-module-with-ov2640-camera-module-development-board-esp32-support-ov2640-and-ov7670-cameras-5v)
 
 
-# Env settings
+# Env settings (Linux)
 ```
 source linux-source-me
 export WIFI_SSID=<your_wifi_ssid>
