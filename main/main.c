@@ -5,6 +5,10 @@
 #include "freertos/task.h"
 #include "driver/gpio.h"
 
+#include "esp_console.h"
+#include "cmd_system.h"
+#include "cmd_wifi.h"
+
 #include "esp_camera.h"
 #include "esp_http_server.h"
 #include "esp_timer.h"
@@ -20,6 +24,28 @@ static const char* _STREAM_BOUNDARY = "\r\n--" PART_BOUNDARY "\r\n";
 static const char* _STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %u\r\n\r\n";
 
 #define CONFIG_XCLK_FREQ 20000000 
+
+// void register_system_common();
+// void register_wifi();
+static esp_console_repl_t *repl = NULL;
+
+static void set_console()
+{
+    esp_console_repl_config_t repl_config = ESP_CONSOLE_REPL_CONFIG_DEFAULT();
+    /* Prompt to be printed before each line.
+     * This can be customized, made dynamic, etc.
+     */
+    repl_config.prompt = "CAM> ";
+    repl_config.max_cmdline_length = 128; //CONFIG_CONSOLE_MAX_COMMAND_LINE_LENGTH;
+
+    esp_console_register_help_command();
+    register_system_common();
+    register_wifi();
+
+    esp_console_dev_uart_config_t hw_config = ESP_CONSOLE_DEV_UART_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK(esp_console_new_repl_uart(&hw_config, &repl_config, &repl));
+
+}
 
 static esp_err_t init_camera(void)
 {
@@ -193,6 +219,8 @@ void app_main()
         ret = nvs_flash_init();
     }
 
+    set_console();
+
     connect_wifi();
 
     if (wifi_connect_status)
@@ -208,4 +236,6 @@ void app_main()
     }
     else
         ESP_LOGI(TAG, "Failed to connected with Wi-Fi, check your network Credentials\n");
+
+    ESP_ERROR_CHECK(esp_console_start_repl(repl));
 }
